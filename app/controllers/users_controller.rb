@@ -1,10 +1,22 @@
 class UsersController < ActionController::Base
   before_action :set_user, only: [:show, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:recreate]
+
 
   # GET /users
   def index
     @users = User.all
     render :index, layout: 'application', as: :html
+  end
+
+  def recreate
+    @user_recreator = UsersRecreatorAction.new()
+
+    if @user_recreator.create
+      redirect_to users_path
+    else
+      render text: user_recreator.errors
+    end
   end
 
   # GET /users/1
