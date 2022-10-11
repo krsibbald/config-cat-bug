@@ -24,7 +24,7 @@ class User < ApplicationRecord
     }
   ]
 
-  def ask_config_cat_for_key
+  def config_cat_from_model
     ConfigCatClient.get_value(
       'BUG_TRACKING',
       false,
