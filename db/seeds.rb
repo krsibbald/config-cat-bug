@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.find_or_create_by(
+  first_name: "Katharine",
+  last_name: "Sibbald",
+  email: 'katharine.sibbald@xplortechnologies.com'
+)
+
+User.find_or_create_by(
+  first_name: 'Katharine',
+  last_name: "should be false",
+  email: 'should.be.false@xplortechnologies.com'
+)
+
+User.find_or_create_by(
+  first_name: 'Katharine',
+  last_name: "should be true",
+  email: 'should.be.true@xplortechnologies.com'
+)
